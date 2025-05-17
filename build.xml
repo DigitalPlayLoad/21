@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="21" default="default" basedir=".">
+    <description>Builds, tests, and runs the project 21.</description>
+    <import file="nbproject/build-impl.xml"/>
+    
+    <!-- Adiciona uma tarefa personalizada para copiar recursos -->
+    <target name="-post-compile">
+        <!-- Copia os recursos para o diretório de saída -->
+        <copy todir="${build.classes.dir}/resources">
+            <fileset dir="${src.dir}/resources"/>
+        </copy>
+        <copy todir="${build.classes.dir}/pkg21/view/cartas_novas">
+            <fileset dir="${src.dir}/pkg21/view/cartas_novas"/>
+        </copy>
+        <echo message="Recursos copiados para o diretório de saída"/>
+    </target>
+    
+    <!-- Adiciona uma tarefa personalizada para copiar recursos no JAR -->
+    <target name="-pre-jar">
+        <!-- Garante que os recursos estejam no diretório de saída antes de criar o JAR -->
+        <copy todir="${build.classes.dir}/resources">
+            <fileset dir="${src.dir}/resources"/>
+        </copy>
+        <copy todir="${build.classes.dir}/pkg21/view/cartas_novas">
+            <fileset dir="${src.dir}/pkg21/view/cartas_novas"/>
+        </copy>
+        <echo message="Recursos copiados para o diretório de saída antes da criação do JAR"/>
+    </target>
+</project>
